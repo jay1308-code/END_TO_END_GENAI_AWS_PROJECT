@@ -1,0 +1,12 @@
+install the requirements
+making the user on aws
+write the app.py for testing the bedrock api
+
+setup awscli
+
+AWS Access Key ID [****************TT53]: 
+AWS Secret Access Key [****************G5Q0]:
+Default region name [ap-south-1]: 
+Default output format [None]: json
+
+
