@@ -38,7 +38,6 @@ def main():
             with st.spinner("processing..."):
                 faiss_index=FAISS.load_local("QASystem/faiss_index",bedrock_embeddings,allow_dangerous_deserialization=True)
                 llm=get_llama2_llm()
-                
                 st.write(get_response_llm(llm,faiss_index,user_question))
                 st.success("Done")
                 
