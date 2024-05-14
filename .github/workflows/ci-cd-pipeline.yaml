@@ -26,14 +26,14 @@ jobs:
           push: true
           tags: jay1308/webapp:${{ github.sha }}
           
-      # - name: Deploy to EC2 instance
-      #   uses: appleboy/ssh-action@master
-      #   with:
-      #     host: ${{ secrets.EC2_HOST }}
-      #     username: ${{ secrets.EC2_USERNAME }}
-      #     key: ${{ secrets.EC2_PRIVATE_KEY }}
-      #     script: |
-      #       docker stop webapp || true
-      #       docker rm webapp || true
-      #       docker pull ${{ secrets.DOCKER_USERNAME }}/webapp:${{ github.sha }}
-      #       docker run -d --name webapp -p 80:80 ${{ secrets.DOCKER_USERNAME }}/webapp:${{ github.sha }}
+      - name: Deploy to EC2 instance
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            docker stop webapp || true
+            docker rm webapp || true
+            docker pull ${{ secrets.DOCKER_USERNAME }}/webapp:${{ github.sha }}
+            docker run -d --name webapp -p 8501:8501 ${{ secrets.DOCKER_USERNAME }}/webapp:${{ github.sha }}
